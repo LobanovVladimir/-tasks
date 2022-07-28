@@ -40,6 +40,24 @@ namespace Codewars_Tasks
                     int num2 = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine(DescendingOrder(num2));// Функция решения 2 задачи
                     break;
+                case 3:
+                    Console.WriteLine("Введите 3 первых числа массива");
+                    Console.WriteLine("Введите 1 число ");
+                    double a3 = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Введите 2 число ");
+                    double b3 = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Введите 3 число ");
+                    double c3 = Convert.ToDouble(Console.ReadLine());
+                    double[] mass = new double[] { a3, b3, c3 };
+                    Console.WriteLine("Введите длинну выводимого массива ");
+                    int n3 = Convert.ToInt32(Console.ReadLine());
+                    double[] rez3 = Tribonacci(mass, n3);
+                    foreach (var item in rez3)
+                    {
+                        Console.Write($"{item} ");
+                    }
+                    break;
+
                 default:
                     break;
             }
@@ -101,6 +119,49 @@ namespace Codewars_Tasks
             int resultint = (int)result;
 
             return resultint;
+        }
+        double[] Tribonacci(double[] signature, int n) // Функция которая на вход получает первые 3 числа массива а дальше по
+                                                       // принципу чисел Трибьоначи( каждое следуюзее = сумма 3 предыдущих)
+                                                       // возвращает n чисел масива
+        {
+            // hackonacci me
+
+            double[] result = new double[n];
+            if (n>=3)
+            {
+                result[0] = signature[0];
+                result[1] = signature[1];
+                result[2] = signature[2];
+                if (n>3)
+                {
+                    double buff = 0; // Число для подсчёта числа Трибоначи
+                    for (int i = 3; i < n; i++)
+                    {
+                        buff = result[i - 3] + result[i - 2] + result[i-1];
+                        result[i] = buff;
+                    }
+                }
+            }
+            else
+            {
+                switch (n)
+                {
+                    case 0:
+                        
+                        break;
+                    case 1:
+                        result[0] = signature[0];
+                        break;
+                    case 2:
+                        result[0] = signature[0];
+                        result[1] = signature[1];
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return result;
         }
     }
 }
